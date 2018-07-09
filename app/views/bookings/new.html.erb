@@ -1,0 +1,18 @@
+<%= form_for @booking do |f| %>
+  <%= f.hidden_field :flight_id, value: params[:booking][:flight_num] %>
+  <%= f.hidden_field :passengers, value: params[:booking][:passengers_num] %>
+  <%= f.hidden_field :date, value: params[:booking][:date] %>
+    <%= f.fields_for :passengers  do |passenger| %>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= passenger.label :name, "Passenger ##{passenger.index+1}" %>
+        <%= passenger.text_field :name, class: "form-control", required: true %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= passenger.label :email, 'email' %>
+        <%= passenger.email_field :email, class: "form-control", required: true %>
+      </div>
+    </div>
+    <% end %>
+  <%= f.submit "Book Flight", class: 'btn btn-outline-info btn-sm' %>
+<% end %>

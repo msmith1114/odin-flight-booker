@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-center"><%= @booking.flight.from_airport.code %> &rightarrow; <%=@booking.flight.to_airport.code %></h1>
+  <p class="text-center">Departure: <%= @booking.flight.departure_format %></p>
+  <hr class="my-4">
+  <div class="row justify-content-center">
+    <div class="col-4 text-center">
+      <% @booking.passengers.each do |passenger| %>
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title"><%=passenger.name%></h5>
+          <p class="card-text"><%=passenger.email%></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
